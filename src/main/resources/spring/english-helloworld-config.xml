@@ -5,13 +5,9 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
             http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd ">
 
-    <context:component-scan base-package="rocks.gebsattel.spring.learning"/>
-
-    <import resource="classpath*:spring/helloworld-config.xml" />
-
-    <bean id="greetingController" class="rocks.gebsattel.spring.learning.controllers.GreetingController">
-        <property name="helloWorldService" ref="helloWorldServiceDefault" />
-        <property name="helloWorldServiceFrench" ref="french" />
-        <property name="helloWorldServiceGerman" ref="helloWorldServiceGerman" />
+    <bean id="helloWorldServiceDefault" factory-bean="helloWorldFactory" factory-method="createHelloWorldService"
+          primary="true">
+        <constructor-arg value="en"></constructor-arg>
     </bean>
+
 </beans>

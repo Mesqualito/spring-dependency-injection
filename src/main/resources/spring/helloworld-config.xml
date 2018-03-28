@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd ">
+
+    <bean id="helloWorldFactory" class="rocks.gebsattel.spring.learning.services.HelloWorldFactory"/>
+
+    <bean id="french" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="fr"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorldServiceGerman" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="de"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorldServicePolish" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="pl"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorldServiceRussian" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="ru"></constructor-arg>
+    </bean>
+
+    <beans profile="english">
+        <import resource="classpath*:spring/english-helloworld-config.xml" />
+    </beans>
+
+    <beans profile="spanish">
+        <import resource="classpath*:spring/spanish-helloworld-config.xml" />
+    </beans>
+</beans>
