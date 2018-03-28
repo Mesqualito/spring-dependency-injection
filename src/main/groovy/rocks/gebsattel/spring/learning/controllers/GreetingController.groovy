@@ -15,22 +15,26 @@ class GreetingController {
 
     // Inversion of Control to spring framework with Setter
     // Autowiring by type 'HelloWorldService'
-    @Autowired
+    // @Autowired //==> moved to resources/spring/spring-config.xml
     void setHelloWorldService(HelloWorldService helloWorldService) {
         this.helloWorldService = helloWorldService
     }
 
     // Autowired by name of method 'helloWorldServiceGerman' which declares the Bean
     // remember: by type 'HelloWorldService' is already registered bean
-    @Autowired
-    @Qualifier("helloWorldServiceGerman")
+    /* ==> moved to resources/spring/spring-config.xml
+     * @Autowired
+     * @Qualifier("helloWorldServiceGerman")
+     */
     void setHelloWorldServiceGerman(HelloWorldService helloWorldServiceGerman) {
         this.helloWorldServiceGerman = helloWorldServiceGerman
     }
 
     // Autowired by explicit spring bean name
-    @Autowired
-    @Qualifier("french")
+    /* ==> moved to resources/spring/spring-config.xml
+     * @Autowired
+     * @Qualifier("french")
+     */
     void setHelloWorldServiceFrench(HelloWorldService helloWorldServiceFrench) {
         this.helloWorldServiceFrench = helloWorldServiceFrench
     }

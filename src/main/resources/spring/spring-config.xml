@@ -7,7 +7,11 @@
 
     <context:component-scan base-package="rocks.gebsattel.spring.learning"/>
 
-    <bean id="greetingController" class="rocks.gebsattel.spring.learning.controllers.GreetingController"/>
+    <bean id="greetingController" class="rocks.gebsattel.spring.learning.controllers.GreetingController">
+        <property name="helloWorldService" ref="helloWorldServiceDefault" />
+        <property name="helloWorldServiceFrench" ref="french" />
+        <property name="helloWorldServiceGerman" ref="helloWorldServiceGerman" />
+    </bean>
 
     <bean id="helloWorldFactory" class="rocks.gebsattel.spring.learning.services.HelloWorldFactory"/>
 
@@ -28,13 +32,13 @@
     </bean>
 
     <beans profile="english">
-        <bean id="helloWorldServiceEnglish" factory-bean="helloWorldFactory" factory-method="createHelloWorldService" primary="true">
+        <bean id="helloWorldServiceDefault" factory-bean="helloWorldFactory" factory-method="createHelloWorldService" primary="true">
         <constructor-arg value="en"></constructor-arg>
         </bean>
     </beans>
 
     <beans profile="spanish">
-        <bean id="helloWorldServiceSpanish" factory-bean="helloWorldFactory" factory-method="createHelloWorldService" primary="true">
+        <bean id="helloWorldServiceDefault" factory-bean="helloWorldFactory" factory-method="createHelloWorldService" primary="true">
             <constructor-arg value="es"></constructor-arg>
         </bean>
     </beans>
