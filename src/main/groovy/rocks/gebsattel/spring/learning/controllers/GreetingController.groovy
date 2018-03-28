@@ -6,7 +6,7 @@ import org.springframework.stereotype.Controller
 import rocks.gebsattel.spring.learning.services.HelloWorldService
 import rocks.gebsattel.spring.learning.services.HelloWorldServiceGermanImpl
 
-@Controller
+// @Controller // ==> moved to resources/spring/spring-config.xml
 class GreetingController {
 
     HelloWorldService helloWorldService

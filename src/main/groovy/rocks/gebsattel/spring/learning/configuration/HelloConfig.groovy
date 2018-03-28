@@ -19,10 +19,12 @@ import rocks.gebsattel.spring.learning.services.HelloWorldServiceSpanishImpl
 @Configuration
 class HelloConfig {
 
-    @Bean
-    HelloWorldFactory helloWorldFactory(){
-        return new HelloWorldFactory()
-    }
+    /* ==> moved to resources/spring/spring-config.xml:
+     * @Bean
+     * HelloWorldFactory helloWorldFactory(){
+     * return new HelloWorldFactory()
+     * }
+     */
 
     @Bean
     @Profile(["default","english"])
