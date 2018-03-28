@@ -11,7 +11,32 @@
 
     <bean id="helloWorldFactory" class="rocks.gebsattel.spring.learning.services.HelloWorldFactory"/>
 
-    
+    <bean id="french" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+            <constructor-arg value="fr"></constructor-arg>
+    </bean>
 
+    <bean id="helloWorldServiceGerman" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="de"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorldServicePolish" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="pl"></constructor-arg>
+    </bean>
+
+    <bean id="helloWorldServiceRussian" factory-bean="helloWorldFactory" factory-method="createHelloWorldService">
+        <constructor-arg value="ru"></constructor-arg>
+    </bean>
+
+    <beans profile="english">
+        <bean id="helloWorldServiceEnglish" factory-bean="helloWorldFactory" factory-method="createHelloWorldService" primary="true">
+        <constructor-arg value="en"></constructor-arg>
+        </bean>
+    </beans>
+
+    <beans profile="spanish">
+        <bean id="helloWorldServiceSpanish" factory-bean="helloWorldFactory" factory-method="createHelloWorldService" primary="true">
+            <constructor-arg value="es"></constructor-arg>
+        </bean>
+    </beans>
 
 </beans>
